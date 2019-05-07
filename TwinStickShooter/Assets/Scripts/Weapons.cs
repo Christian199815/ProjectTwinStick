@@ -16,7 +16,6 @@ public class Weapons : ScriptableObject {
         public float reloadDelay;
 
         public GameObject bullet;
-        public Vector3 shootOffset;
     }
 
     public List<Weapon> weapons;
