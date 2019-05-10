@@ -1,63 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AiCharacterScript : MonoBehaviour
 {
-    [SerializeField] private Transform Waypoint1;
-    [SerializeField] private Transform Waypoint2;
-    [SerializeField] private Transform Waypoint3;
-    [SerializeField] private Transform Waypoint4;
+    public Transform[] points;
+    private int DestPoint = 0;
+    private NavMeshAgent agent;
+    private float distance = 3;
+    private Transform player;
 
-
-    public int Health;
-    public int DMG;
-    [SerializeField] protected float Speed;
-
-    //starts at a point in the game
+    
     private void Start()
     {
-        transform.position = Waypoint1.position;
+        agent = GetComponent<NavMeshAgent>();
+        agent.autoBraking = false;
+        GotoNextPoint();
+
+        
     }
 
 
+
+    void GotoNextPoint()
+    {
+        if(points.Length == 0)
+            return;
+
+        agent.destination = points[DestPoint].position;
+        DestPoint = (DestPoint + 1) % points.Length;
+    }
 
     private void Update()
     {
-        Movement();
-    }
-
-    
-    public void Movement()
-    {
-        if(transform.position == Waypoint1.position)
+        if (Vector3.Distance(transform.position, player.transform.position) <= distance)
         {
-            print(Waypoint1.position);
-            transform.position = Vector3.MoveTowards(transform.position, Waypoint2.position, Speed * Time.deltaTime);
-        }
-        else if (transform.position == Waypoint2.position)
-        {
-            print(Waypoint2.position);
-            transform.position = Vector3.MoveTowards(transform.position, Waypoint3.position, Speed * Time.deltaTime);
-        }
-        else if (transform.position == Waypoint3.position)
-        {
-            print(Waypoint3.position);
-            transform.position = Vector3.MoveTowards(transform.position, Waypoint4.position, Speed * Time.deltaTime);
-        }
-        else if (transform.position == Waypoint4.position)
-        {
-            print(Waypoint4.position);
-            transform.position = Vector3.MoveTowards(transform.position, Waypoint1.position, Speed * Time.deltaTime);
+            GetComponent<NavMeshAgent>().destination = player.transform.position;
         }
 
+        else
+        {
+            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+                GotoNextPoint();
+        }
     }
 
     
 
 
-
-
-    
 
 }

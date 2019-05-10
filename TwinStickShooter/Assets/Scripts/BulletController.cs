@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour {
 
     [Header("Bullet settings")]
     public float bulletSpeed = 7.0f;
+    public AiCharacterScript Ai;
 
     private void Start()
     {
@@ -23,6 +24,16 @@ public class BulletController : MonoBehaviour {
         if (other.transform.tag == "Wall")
         {
             Destroy(gameObject);
+        }
+        if(other.tag == "Enemy")
+        {
+
+            other.gameObject.GetComponent<AiCharacterScript>().Health--;
+            Destroy(gameObject);
+        }
+        if(other.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerController>().Health--;
         }
     }
 }
