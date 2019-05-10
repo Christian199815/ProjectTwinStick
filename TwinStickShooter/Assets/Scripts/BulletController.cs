@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour {
 
+    private Rigidbody rb;
+
     [Header("Bullet settings")]
     public float bulletSpeed = 7.0f;
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     private void Update () {
-		transform.position += transform.forward * bulletSpeed;
+		rb.velocity = transform.forward * bulletSpeed;
 	}
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        print(other.tag);
-
-        if(other.tag == "Wall")
+        if (other.transform.tag == "Wall")
         {
             Destroy(gameObject);
         }

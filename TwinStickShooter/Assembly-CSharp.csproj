@@ -62,15 +62,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AaronQuickAssets\Scripts\AutoSave.cs" />
+    <Compile Include="Assets\AaronQuickAssets\Scripts\CollisionManager.cs" />
+    <Compile Include="Assets\AaronQuickAssets\Scripts\EMath.cs" />
     <Compile Include="Assets\AaronQuickAssets\Scripts\Mouse.cs" />
     <Compile Include="Assets\AaronQuickAssets\Scripts\PauzeMenu.cs" />
     <Compile Include="Assets\AaronQuickAssets\Scripts\PointAtMouse.cs" />
     <Compile Include="Assets\AaronQuickAssets\Scripts\SceneSwitchButton.cs" />
     <Compile Include="Assets\AaronQuickAssets\Scripts\SpriteShadow.cs" />
-    <Compile Include="Assets\AaronQuickAssets\Scripts\VectorMath.cs" />
     <Compile Include="Assets\Door.cs" />
+    <Compile Include="Assets\Scripts\AiCharacterScript.cs" />
+    <Compile Include="Assets\Scripts\BackButton.cs" />
     <Compile Include="Assets\Scripts\BulletController.cs" />
+    <Compile Include="Assets\Scripts\CreditsButton.cs" />
+    <Compile Include="Assets\Scripts\ExitButton.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\StartButton.cs" />
     <Compile Include="Assets\Scripts\Weapons.cs" />
     <None Include="Assets\AaronQuickAssets\Scripts\Shaders\Sprites-SolidCol.shader" />
     <None Include="Assets\AaronQuickAssets\Scripts\Shaders\TransparentColor.shader" />

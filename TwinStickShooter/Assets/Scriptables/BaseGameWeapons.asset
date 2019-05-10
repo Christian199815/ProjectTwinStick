@@ -18,4 +18,9 @@ MonoBehaviour:
     shootDelay: 0.2
     reloadDelay: 1
     bullet: {fileID: 1105580705983860, guid: fb60d734f661f2f419da7fffe79b0de0, type: 2}
-    shootOffset: {x: 0, y: 0, z: 0.5}
+  - weaponName: SMG
+    damage: 20
+    ammo: 10
+    shootDelay: 0.2
+    reloadDelay: 1
+    bullet: {fileID: 1105580705983860, guid: fb60d734f661f2f419da7fffe79b0de0, type: 2}
