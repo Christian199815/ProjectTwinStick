@@ -10,7 +10,6 @@ public class AiCharacterScript : MonoBehaviour
     private NavMeshAgent agent;
     private float distance = 3;
     private Transform player;
-
     
     private void Start()
     {

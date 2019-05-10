@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour {
 
+    private Rigidbody rb;
+
     [Header("Bullet settings")]
     public float bulletSpeed = 7.0f;
     public AiCharacterScript Ai;
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     private void Update () {
-		transform.position += transform.forward * bulletSpeed;
+		rb.velocity = transform.forward * bulletSpeed;
 	}
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        print(other.tag);
-
-        if(other.tag == "Wall")
+        if (other.transform.tag == "Wall")
         {
             Destroy(gameObject);
         }
-        if(other.tag == "Enemy")
+        if(other.transform.tag == "Enemy")
         {
 
-            other.gameObject.GetComponent<AiCharacterScript>().Health--;
+            //other.gameObject.GetComponent<AiCharacterScript>().Health--;
             Destroy(gameObject);
         }
-        if(other.tag == "Player")
+        if(other.transform.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().Health--;
         }
