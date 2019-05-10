@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     public float shootTimer;
     public float reloadTimer;
 
+    [Header("Player Information")]
+    public int Health;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
