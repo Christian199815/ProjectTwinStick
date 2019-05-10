@@ -25,13 +25,13 @@ public class BulletController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        if(other.tag == "Enemy")
+        if(other.transform.tag == "Enemy")
         {
 
-            other.gameObject.GetComponent<AiCharacterScript>().Health--;
+            //other.gameObject.GetComponent<AiCharacterScript>().Health--;
             Destroy(gameObject);
         }
-        if(other.tag == "Player")
+        if(other.transform.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().Health--;
         }
